@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – Quitto</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.7; color: #1c1c1e; background: #f5f5f7; padding: 24px 16px 64px; }
+    .container { max-width: 740px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 48px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    @media (max-width: 600px) { .container { padding: 28px 20px; } }
+    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+    .logo-icon { width: 48px; height: 48px; background: #ff9500; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .logo-name { font-size: 22px; font-weight: 700; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .subtitle { color: #636366; margin-bottom: 36px; font-size: 15px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #e5e5ea; }
+    p { margin-bottom: 12px; color: #3a3a3c; }
+    ul { margin: 8px 0 12px 20px; color: #3a3a3c; }
+    li { margin-bottom: 6px; }
+    .highlight { background: #fff3cd; border-left: 3px solid #ff9500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 15px; }
+    .info-box { background: #f2f2f7; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; }
+    th { text-align: left; padding: 10px 12px; background: #f2f2f7; font-weight: 600; border-bottom: 2px solid #e5e5ea; }
+    td { padding: 10px 12px; border-bottom: 1px solid #e5e5ea; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    a { color: #007aff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .updated { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea; font-size: 13px; color: #8e8e93; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="logo"><div class="logo-icon">🧾</div><span class="logo-name">Quitto</span></div>
+  <h1>Datenschutzerklärung</h1>
+  <p class="subtitle">Gültig für die iOS-App „Quitto – Kleinunternehmer Buchhaltung"</p>
+  <h2>1. Verantwortlicher</h2>
+  <p>Verantwortlicher im Sinne der DSGVO ist:</p>
+  <div class="info-box"><strong>Tobias Hötzel</strong><br>Sennestraße 14, 44143 Dortmund<br>Deutschland<br>E-Mail: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></div>
+  <h2>2. Grundsätze der Datenverarbeitung</h2>
+  <div class="highlight">Quitto ist eine <strong>Offline-First-App</strong>. Deine Geschäftsdaten werden ausschließlich <strong>lokal auf deinem Gerät</strong> gespeichert und verlassen es nur in den unten genannten Ausnahmen.</div>
+  <p>Wir verarbeiten nur die Daten, die für den Betrieb der App unbedingt erforderlich sind. Es findet keine Profilbildung, kein Tracking und keine Weitergabe an Werbepartner statt.</p>
+  <h2>3. Welche Daten werden verarbeitet?</h2>
+  <table><thead><tr><th>Datenkategorie</th><th>Zweck</th><th>Speicherort</th></tr></thead><tbody>
+  <tr><td><strong>Belegfotos</strong></td><td>Automatische Erkennung von Betrag, Händler und Kategorie</td><td>Ausschließlich lokal (SwiftData)</td></tr>
+  <tr><td><strong>Ausgabendaten</strong></td><td>EÜR-Buchführung</td><td>Ausschließlich lokal</td></tr>
+  <tr><td><strong>Rechnungsdaten</strong></td><td>Rechnungserstellung und -archivierung</td><td>Ausschließlich lokal</td></tr>
+  <tr><td><strong>Kundendaten</strong></td><td>Adressierung von Rechnungen</td><td>Ausschließlich lokal</td></tr>
+  <tr><td><strong>Firmenprofil</strong></td><td>Erscheint auf deinen Rechnungen</td><td>Ausschließlich lokal</td></tr>
+  <tr><td><strong>OCR-Text aus Belegfotos</strong></td><td>KI-gestützte Kategorisierung über Cloudflare Worker</td><td>Temporär, nicht gespeichert</td></tr>
+  <tr><td><strong>Anonyme Geräte-ID</strong></td><td>Rate-Limiting im Cloudflare Worker</td><td>Cloudflare KV (kein Personenbezug)</td></tr>
+  <tr><td><strong>Abo-Status</strong></td><td>Premium-Abonnement via RevenueCat</td><td>RevenueCat-Server</td></tr>
+  </tbody></table>
+  <h2>4. Kamerazugriff</h2>
+  <p>Quitto benötigt Kamerazugriff um Belege abzufotografieren. Fotos werden <strong>nicht automatisch in der Foto-Bibliothek gespeichert</strong> und ausschließlich lokal in der App gespeichert. Du kannst den Zugriff unter <em>Einstellungen → Quitto → Kamera</em> widerrufen.</p>
+  <h2>5. KI-gestützte Belegkategorisierung (Cloudflare & Anthropic)</h2>
+  <p>Der OCR-Text eines Belegs wird zur Kategorisierung an unseren Cloudflare Worker gesendet, der ihn an die <strong>Anthropic API</strong> (Claude Haiku) weiterleitet.</p>
+  <p><strong>Was übertragen wird:</strong></p><ul><li>OCR-Text des Belegs (Händlername, Betrag, Datum)</li><li>Anonyme Geräte-ID (UUID, kein Personenbezug)</li><li>Premium-Status (true/false)</li></ul>
+  <p><strong>Was nicht übertragen wird:</strong></p><ul><li>Das Belegfoto selbst</li><li>Dein Name oder deine E-Mail</li><li>Kundendaten oder Rechnungsinhalte</li></ul>
+  <p>Der OCR-Text wird nicht dauerhaft gespeichert. Weitere Infos: <a href="https://www.anthropic.com/legal/privacy" target="_blank">Anthropic Datenschutz</a> · <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank">Cloudflare Datenschutz</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h2>6. Abonnement-Verwaltung (RevenueCat)</h2>
+  <p>Käufe werden über <strong>RevenueCat, Inc.</strong> (USA) abgewickelt. RevenueCat erhält eine anonyme Nutzer-ID, Produkt- und Geräteinformationen. Zahlungen laufen ausschließlich über Apple. <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h2>7. iCloud-Synchronisierung</h2>
+  <p>Bei aktiviertem iCloud Drive können Daten über iCloud synchronisiert werden. Dies unterliegt der <a href="https://www.apple.com/de/legal/privacy/" target="_blank">Datenschutzerklärung von Apple</a>. Deaktivierbar unter <em>Einstellungen → [dein Name] → iCloud → Quitto</em>.</p>
+  <h2>8. Keine Werbung, kein Tracking</h2>
+  <p>Quitto enthält <strong>keinerlei Werbung</strong> und verwendet <strong>keine Tracking-Technologien</strong>. Es findet keine Weitergabe deiner Daten an Werbepartner statt.</p>
+  <h2>9. Datenlöschung</h2>
+  <p>Alle lokalen Daten werden gelöscht wenn du die App deinstallierst. Für Löschung bei RevenueCat oder Anthropic wende dich an: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
+  <h2>10. Deine Rechte (DSGVO)</h2>
+  <p>Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch (Art. 21) und Beschwerde bei der zuständigen Aufsichtsbehörde. Kontakt: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
+  <h2>11. Datensicherheit</h2>
+  <p>Kommunikation mit dem Cloudflare Worker erfolgt verschlüsselt über HTTPS/TLS. Der Anthropic-API-Key ist ausschließlich im Cloudflare Worker hinterlegt — niemals in der App. Lokale Daten werden durch iOS-Geräteverschlüsselung geschützt.</p>
+  <h2>12. Änderungen</h2>
+  <p>Diese Datenschutzerklärung kann bei Änderungen der App oder gesetzlicher Anforderungen angepasst werden. Die aktuelle Version ist stets unter der in der App verlinkten URL abrufbar.</p>
+  <div class="updated">Stand: Mai 2026 · Quitto – Kleinunternehmer Buchhaltung</div>
+</div>
+</body>
+</html>
