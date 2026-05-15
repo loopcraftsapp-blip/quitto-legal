@@ -1,78 +1,468 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Datenschutzerklärung – Quitto</title>
+  <meta name="description" content="Datenschutzerklärung der Quitto iOS App für §19-Kleinunternehmer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.7; color: #1c1c1e; background: #f5f5f7; padding: 24px 16px 64px; }
-    .container { max-width: 740px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 48px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
-    @media (max-width: 600px) { .container { padding: 28px 20px; } }
-    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
-    .logo-icon { width: 48px; height: 48px; background: #ff9500; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-    .logo-name { font-size: 22px; font-weight: 700; }
-    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-    .subtitle { color: #636366; margin-bottom: 36px; font-size: 15px; }
-    h2 { font-size: 18px; font-weight: 600; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #e5e5ea; }
-    p { margin-bottom: 12px; color: #3a3a3c; }
-    ul { margin: 8px 0 12px 20px; color: #3a3a3c; }
-    li { margin-bottom: 6px; }
-    .highlight { background: #fff3cd; border-left: 3px solid #ff9500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 15px; }
-    .info-box { background: #f2f2f7; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 15px; }
-    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; }
-    th { text-align: left; padding: 10px 12px; background: #f2f2f7; font-weight: 600; border-bottom: 2px solid #e5e5ea; }
-    td { padding: 10px 12px; border-bottom: 1px solid #e5e5ea; vertical-align: top; }
-    tr:last-child td { border-bottom: none; }
-    a { color: #007aff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .updated { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea; font-size: 13px; color: #8e8e93; }
+
+    :root {
+      --navy:        #0B2D48;
+      --teal:        #0E7490;
+      --teal-light:  #22D3EE;
+      --teal-bg:     #F0FDFF;
+      --white:       #FFFFFF;
+      --gray-50:     #F8FAFC;
+      --gray-100:    #F1F5F9;
+      --gray-300:    #CBD5E1;
+      --gray-500:    #64748B;
+      --gray-700:    #334155;
+      --gray-900:    #0F172A;
+      --radius:      16px;
+      --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.90);
+      backdrop-filter: saturate(180%) blur(16px);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .topbar-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .back-link:hover { color: var(--navy); }
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .topbar-logo-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .topbar-logo-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(160deg, #0B2D48 0%, #0c3d5e 50%, #0E7490 100%);
+      padding: 52px 24px 56px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 15px;
+      color: rgba(255,255,255,.6);
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    .content-wrap h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 48px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--teal-bg);
+      letter-spacing: -0.3px;
+    }
+
+    .content-wrap h2:first-child { margin-top: 0; }
+
+    .content-wrap p {
+      font-size: 15.5px;
+      color: var(--gray-700);
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+
+    .content-wrap ul {
+      margin: 10px 0 16px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .content-wrap ul li {
+      font-size: 15.5px;
+      color: var(--gray-700);
+      padding: 5px 0 5px 22px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .content-wrap ul li::before {
+      content: "–";
+      position: absolute;
+      left: 6px;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .content-wrap strong {
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    .content-wrap a {
+      color: var(--teal);
+      font-weight: 500;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .content-wrap a:hover { text-decoration: underline; }
+
+    hr {
+      display: none;
+    }
+
+    /* Info box for key points */
+    .info-box {
+      background: var(--teal-bg);
+      border: 1px solid #BAE6FD;
+      border-left: 4px solid var(--teal);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+    .info-box p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* Section number badge */
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 10px;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-900);
+      padding: 48px 24px 36px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .footer-logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--teal) 0%, #0284C7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .footer-logo-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.3px;
+    }
+    .footer-tagline {
+      font-size: 13.5px;
+      color: rgba(255,255,255,.45);
+      max-width: 240px;
+      line-height: 1.6;
+    }
+    .footer-links h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 14px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,.3);
+    }
+    .footer-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: 8px 16px;
+      text-decoration: none;
+      color: rgba(255,255,255,.7);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background .15s;
+    }
+    .footer-appstore:hover { background: rgba(255,255,255,.14); }
+
+    @media (max-width: 640px) {
+      .content-wrap { padding: 36px 20px 60px; }
+      .footer-top { flex-direction: column; }
+      .footer-links { display: flex; gap: 40px; flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="logo"><div class="logo-icon">🧾</div><span class="logo-name">Quitto</span></div>
-  <h1>Datenschutzerklärung</h1>
-  <p class="subtitle">Gültig für die iOS-App „Quitto – Kleinunternehmer Buchhaltung"</p>
-  <h2>1. Verantwortlicher</h2>
-  <p>Verantwortlicher im Sinne der DSGVO ist:</p>
-  <div class="info-box"><strong>Tobias Hötzel</strong><br>Sennestraße 14, 44143 Dortmund<br>Deutschland<br>E-Mail: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></div>
-  <h2>2. Grundsätze der Datenverarbeitung</h2>
-  <div class="highlight">Quitto ist eine <strong>Offline-First-App</strong>. Deine Geschäftsdaten werden ausschließlich <strong>lokal auf deinem Gerät</strong> gespeichert und verlassen es nur in den unten genannten Ausnahmen.</div>
-  <p>Wir verarbeiten nur die Daten, die für den Betrieb der App unbedingt erforderlich sind. Es findet keine Profilbildung, kein Tracking und keine Weitergabe an Werbepartner statt.</p>
-  <h2>3. Welche Daten werden verarbeitet?</h2>
-  <table><thead><tr><th>Datenkategorie</th><th>Zweck</th><th>Speicherort</th></tr></thead><tbody>
-  <tr><td><strong>Belegfotos</strong></td><td>Automatische Erkennung von Betrag, Händler und Kategorie</td><td>Ausschließlich lokal (SwiftData)</td></tr>
-  <tr><td><strong>Ausgabendaten</strong></td><td>EÜR-Buchführung</td><td>Ausschließlich lokal</td></tr>
-  <tr><td><strong>Rechnungsdaten</strong></td><td>Rechnungserstellung und -archivierung</td><td>Ausschließlich lokal</td></tr>
-  <tr><td><strong>Kundendaten</strong></td><td>Adressierung von Rechnungen</td><td>Ausschließlich lokal</td></tr>
-  <tr><td><strong>Firmenprofil</strong></td><td>Erscheint auf deinen Rechnungen</td><td>Ausschließlich lokal</td></tr>
-  <tr><td><strong>OCR-Text aus Belegfotos</strong></td><td>KI-gestützte Kategorisierung über Cloudflare Worker</td><td>Temporär, nicht gespeichert</td></tr>
-  <tr><td><strong>Anonyme Geräte-ID</strong></td><td>Rate-Limiting im Cloudflare Worker</td><td>Cloudflare KV (kein Personenbezug)</td></tr>
-  <tr><td><strong>Abo-Status</strong></td><td>Premium-Abonnement via RevenueCat</td><td>RevenueCat-Server</td></tr>
-  </tbody></table>
-  <h2>4. Kamerazugriff</h2>
-  <p>Quitto benötigt Kamerazugriff um Belege abzufotografieren. Fotos werden <strong>nicht automatisch in der Foto-Bibliothek gespeichert</strong> und ausschließlich lokal in der App gespeichert. Du kannst den Zugriff unter <em>Einstellungen → Quitto → Kamera</em> widerrufen.</p>
-  <h2>5. KI-gestützte Belegkategorisierung (Cloudflare & Anthropic)</h2>
-  <p>Der OCR-Text eines Belegs wird zur Kategorisierung an unseren Cloudflare Worker gesendet, der ihn an die <strong>Anthropic API</strong> (Claude Haiku) weiterleitet.</p>
-  <p><strong>Was übertragen wird:</strong></p><ul><li>OCR-Text des Belegs (Händlername, Betrag, Datum)</li><li>Anonyme Geräte-ID (UUID, kein Personenbezug)</li><li>Premium-Status (true/false)</li></ul>
-  <p><strong>Was nicht übertragen wird:</strong></p><ul><li>Das Belegfoto selbst</li><li>Dein Name oder deine E-Mail</li><li>Kundendaten oder Rechnungsinhalte</li></ul>
-  <p>Der OCR-Text wird nicht dauerhaft gespeichert. Weitere Infos: <a href="https://www.anthropic.com/legal/privacy" target="_blank">Anthropic Datenschutz</a> · <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank">Cloudflare Datenschutz</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
-  <h2>6. Abonnement-Verwaltung (RevenueCat)</h2>
-  <p>Käufe werden über <strong>RevenueCat, Inc.</strong> (USA) abgewickelt. RevenueCat erhält eine anonyme Nutzer-ID, Produkt- und Geräteinformationen. Zahlungen laufen ausschließlich über Apple. <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
-  <h2>7. iCloud-Synchronisierung</h2>
-  <p>Bei aktiviertem iCloud Drive können Daten über iCloud synchronisiert werden. Dies unterliegt der <a href="https://www.apple.com/de/legal/privacy/" target="_blank">Datenschutzerklärung von Apple</a>. Deaktivierbar unter <em>Einstellungen → [dein Name] → iCloud → Quitto</em>.</p>
-  <h2>8. Keine Werbung, kein Tracking</h2>
-  <p>Quitto enthält <strong>keinerlei Werbung</strong> und verwendet <strong>keine Tracking-Technologien</strong>. Es findet keine Weitergabe deiner Daten an Werbepartner statt.</p>
-  <h2>9. Datenlöschung</h2>
-  <p>Alle lokalen Daten werden gelöscht wenn du die App deinstallierst. Für Löschung bei RevenueCat oder Anthropic wende dich an: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
-  <h2>10. Deine Rechte (DSGVO)</h2>
-  <p>Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch (Art. 21) und Beschwerde bei der zuständigen Aufsichtsbehörde. Kontakt: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
-  <h2>11. Datensicherheit</h2>
-  <p>Kommunikation mit dem Cloudflare Worker erfolgt verschlüsselt über HTTPS/TLS. Der Anthropic-API-Key ist ausschließlich im Cloudflare Worker hinterlegt — niemals in der App. Lokale Daten werden durch iOS-Geräteverschlüsselung geschützt.</p>
-  <h2>12. Änderungen</h2>
-  <p>Diese Datenschutzerklärung kann bei Änderungen der App oder gesetzlicher Anforderungen angepasst werden. Die aktuelle Version ist stets unter der in der App verlinkten URL abrufbar.</p>
-  <div class="updated">Stand: Mai 2026 · Quitto – Kleinunternehmer Buchhaltung</div>
+
+<!-- ── TOP BAR ── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Zurück
+    </a>
+    <a href="index.html" class="topbar-logo">
+      <div class="topbar-logo-icon">Q</div>
+      <span class="topbar-logo-name">Quitto</span>
+    </a>
+  </div>
 </div>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <h1>Datenschutzerklärung</h1>
+  <p>Stand: Mai 2026</p>
+</div>
+
+<!-- ── CONTENT ── -->
+<div class="content-wrap">
+
+  <div class="info-box">
+    <p>🔒 Quitto speichert deine Buchhaltungsdaten ausschließlich lokal auf deinem iPhone. Es gibt keinen eigenen Server. Kein Tracking, keine Werbung, keine Nutzerprofile.</p>
+  </div>
+
+  <h2><span class="section-num">1</span>Verantwortlicher</h2>
+  <p>Verantwortlich im Sinne der DSGVO:</p>
+  <p><strong>Tobias H.</strong><br/>Deutschland<br/>E-Mail: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
+  <p>Bei Fragen zum Datenschutz können Sie sich jederzeit per E-Mail an die oben genannte Adresse wenden.</p>
+
+  <h2><span class="section-num">2</span>Überblick: Wie Quitto mit Ihren Daten umgeht</h2>
+  <p>Quitto ist eine Buchhaltungs-App für Kleinunternehmer nach §19 UStG. Alle Ihre Buchhaltungsdaten — Einnahmen, Ausgaben, Belege — werden <strong>ausschließlich lokal auf Ihrem iPhone gespeichert</strong> (via SwiftData). Es gibt keinen eigenen Backend-Server. Ihre Daten verlassen Ihr Gerät nicht, außer in den unten beschriebenen, eng begrenzten Fällen.</p>
+  <p>Quitto verwendet kein Behavioral Tracking, keine Werbenetzwerke und keine Marketing-Analytics. Es werden keine Nutzungsprofile erstellt. Zur reinen Stabilitätssicherung der App werden anonyme Crash-Berichte über Sentry verarbeitet (siehe Abschnitt 7).</p>
+
+  <h2><span class="section-num">3</span>Lokale Datenspeicherung</h2>
+  <p>Alle von Ihnen eingegebenen Buchhaltungsdaten (z. B. Rechnungen, Ausgaben, Beträge, Notizen) werden lokal auf Ihrem Gerät gespeichert. Eine Übertragung dieser Daten an den Anbieter oder Dritte findet nicht statt.</p>
+  <p>Die Daten liegen im App-Sandbox-Bereich Ihres iPhones und sind für andere Apps nicht zugänglich. Wenn Sie die App löschen, werden alle lokal gespeicherten Daten entfernt.</p>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung — die Speicherung ist erforderlich, damit die App funktioniert).</p>
+
+  <h2><span class="section-num">4</span>KI-Belegauswertung: Cloudflare Worker und Claude API <em style="font-style:normal;font-size:13px;font-weight:500;color:var(--gray-500)">(nur Premium)</em></h2>
+  <p>Quitto bietet Premium-Nutzern eine KI-gestützte Belegauswertung. Dabei wird der Text eines Belegs (z. B. per On-Device OCR aus einem Foto extrahiert) zur Auswertung an einen Cloudflare Worker übermittelt, der seinerseits die Claude API von Anthropic nutzt.</p>
+  <p><strong>Was übertragen wird:</strong> Ausschließlich der Textinhalt des jeweiligen Belegs (z. B. Händlername, Betrag, Datum). Es werden keine Kontodaten, Namen oder andere personenbezogene Daten aus Ihrem Profil übermittelt.</p>
+  <p><strong>Was nicht gespeichert wird:</strong> Quitto speichert die übermittelten Beleg-Texte nicht auf einem eigenen Server. Die Verarbeitung erfolgt zustandslos.</p>
+  <p><strong>Auftragsverarbeiter:</strong></p>
+  <ul>
+    <li><strong>Cloudflare, Inc.</strong> (San Francisco, USA) — Betreiber der Worker-Infrastruktur. Cloudflare hat sich dem EU-US Data Privacy Framework verpflichtet. Datenschutzerklärung: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></li>
+    <li><strong>Anthropic, PBC</strong> (San Francisco, USA) — Anbieter der Claude API. Die Datenverarbeitung erfolgt auf Basis eines Data Processing Agreements. Datenschutzerklärung: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a></li>
+  </ul>
+  <p>Beide Dienstleister agieren als Auftragsverarbeiter und dürfen die übermittelten Daten nicht für eigene Zwecke nutzen.</p>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung — die Übertragung ist notwendig, um die gebuchte Premium-Funktion bereitzustellen).</p>
+
+  <h2><span class="section-num">5</span>Abo-Verwaltung: RevenueCat</h2>
+  <p>Die Verwaltung von Abonnements (monatlich oder jährlich) erfolgt über <strong>RevenueCat, Inc.</strong> (San Francisco, USA). RevenueCat empfängt dabei technische Informationen zur Abonnement-Validierung, z. B. eine anonyme Geräte-ID und den Kaufstatus aus dem App Store.</p>
+  <p>RevenueCat verarbeitet diese Daten als Auftragsverarbeiter und hat sich dem EU-US Data Privacy Framework verpflichtet.</p>
+  <p>Weitere Informationen finden Sie in der Datenschutzerklärung von RevenueCat: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung — Abo-Prüfung ist erforderlich für die Premium-Freischaltung).</p>
+
+  <h2><span class="section-num">6</span>Zahlungsabwicklung: Apple In-App Purchase</h2>
+  <p>Käufe und Abonnements werden ausschließlich über das Apple-In-App-Purchase-System abgewickelt. Quitto erhält dabei keine Zahlungsdaten (z. B. Kreditkartennummern). Die gesamte Zahlungsabwicklung liegt bei Apple.</p>
+  <p>Weitere Informationen finden Sie in der Datenschutzerklärung von Apple: <a href="https://www.apple.com/de/legal/privacy/" target="_blank" rel="noopener">apple.com/de/legal/privacy</a></p>
+
+  <h2><span class="section-num">7</span>Crash- und Fehleranalyse: Sentry</h2>
+  <p>Damit Abstürze und Fehler in Quitto schnell erkannt und behoben werden können, nutzt die App das Crash-Reporting-Tool <strong>Sentry</strong>. Sentry läuft ausschließlich in den im App Store ausgelieferten Release-Builds, nicht in Entwickler-Builds.</p>
+  <p><strong>Was übertragen wird, wenn ein Fehler auftritt:</strong></p>
+  <ul>
+    <li>Technischer Stack-Trace des Fehlers (Datei-/Funktionsname, Zeilennummer)</li>
+    <li>iOS-Version, Gerätemodell, App-Version und Build-Nummer</li>
+    <li>Anonyme Geräte-Installations-ID (kein Apple-Account, kein Name, keine E-Mail)</li>
+    <li>Zeitpunkt des Fehlers</li>
+  </ul>
+  <p><strong>Was NICHT übertragen wird:</strong> Keine Buchhaltungsdaten, keine Rechnungen, keine Ausgaben, keine Beleg-Texte, keine Kunden, keine Firmendaten, keine personenbezogenen Identifikatoren. Die Option <code>sendDefaultPii</code> ist im Code dauerhaft deaktiviert.</p>
+  <p><strong>Datenstandort:</strong> Quitto nutzt das EU-Datacenter von Sentry (<code>ingest.de.sentry.io</code>, Frankfurt). Die Crash-Daten verlassen den EWR nicht.</p>
+  <p><strong>Speicherdauer:</strong> Sentry speichert Crash-Berichte standardmäßig 90 Tage und löscht sie danach automatisch.</p>
+  <p><strong>Auftragsverarbeiter:</strong></p>
+  <ul>
+    <li><strong>Functional Software, Inc.</strong> (dba Sentry, 45 Fremont Street, San Francisco, CA 94105, USA). Verarbeitung im EU-Datacenter über die Sentry GmbH (Wien). Datenschutzerklärung: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">sentry.io/privacy</a> · DPA: <a href="https://sentry.io/legal/dpa/" target="_blank" rel="noopener">sentry.io/legal/dpa</a></li>
+  </ul>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an einer stabilen, fehlerfreien App. Die übermittelten Daten sind streng auf das technische Minimum begrenzt.</p>
+  <p><strong>Widerspruchsrecht:</strong> Sie können der Verarbeitung jederzeit per E-Mail an <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a> widersprechen. Wir werden Sie dann in zukünftigen Builds aus dem Crash-Reporting ausschließen.</p>
+
+  <h2><span class="section-num">8</span>Keine Cookies, kein Tracking, keine Werbung</h2>
+  <p>Quitto ist eine native iOS-App und verwendet weder Cookies noch Web-Tracking-Technologien. Es werden keine Werbenetzwerke eingebunden, keine Nutzungsprofile erstellt und keine Daten für Werbezwecke genutzt oder weitergegeben.</p>
+
+  <h2><span class="section-num">9</span>Keine Weitergabe an Dritte</h2>
+  <p>Ihre Daten werden nicht an Dritte verkauft oder zu Werbezwecken weitergegeben. Eine Weitergabe erfolgt ausschließlich an die oben genannten Auftragsverarbeiter (Cloudflare, Anthropic, RevenueCat, Apple, Sentry), soweit dies für den Betrieb der jeweiligen Funktion technisch erforderlich ist, und nur auf Basis entsprechender Verträge zur Auftragsverarbeitung.</p>
+
+  <h2><span class="section-num">10</span>Ihre Rechte als betroffene Person</h2>
+  <p>Sie haben gegenüber dem Verantwortlichen folgende Rechte:</p>
+  <ul>
+    <li><strong>Auskunft</strong> (Art. 15 DSGVO): Sie können erfahren, welche Daten über Sie verarbeitet werden.</li>
+    <li><strong>Berichtigung</strong> (Art. 16 DSGVO): Sie können unrichtige Daten korrigieren lassen.</li>
+    <li><strong>Löschung</strong> (Art. 17 DSGVO): Sie können die Löschung Ihrer Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</li>
+    <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO): Sie können unter bestimmten Voraussetzungen eine Einschränkung der Verarbeitung verlangen.</li>
+    <li><strong>Datenportabilität</strong> (Art. 20 DSGVO): Sie haben das Recht, Ihre Daten in einem gängigen maschinenlesbaren Format zu erhalten.</li>
+    <li><strong>Widerspruch</strong> (Art. 21 DSGVO): Sie können der Verarbeitung Ihrer Daten widersprechen, soweit diese auf berechtigten Interessen beruht.</li>
+    <li><strong>Beschwerde bei einer Aufsichtsbehörde</strong> (Art. 77 DSGVO): z. B. beim Landesbeauftragten für den Datenschutz in Ihrem Bundesland (Deutschland), der Datenschutzbehörde Österreich (dsb.gv.at) oder dem EDÖB (edöb.admin.ch) in der Schweiz.</li>
+  </ul>
+  <p>Da nahezu alle Daten lokal auf Ihrem Gerät gespeichert sind, können Sie Ihre Daten jederzeit direkt in der App einsehen, bearbeiten und löschen. Für Anfragen zu Daten bei Drittanbietern (z. B. RevenueCat) wenden Sie sich bitte direkt an die jeweiligen Anbieter.</p>
+  <p>Für alle anderen Anfragen: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
+
+  <h2><span class="section-num">11</span>Kinder</h2>
+  <p>Quitto richtet sich nicht an Kinder unter 13 Jahren. Es werden wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren erhoben.</p>
+
+  <h2><span class="section-num">12</span>Änderungen dieser Datenschutzerklärung</h2>
+  <p>Diese Datenschutzerklärung kann gelegentlich aktualisiert werden, z. B. bei neuen Funktionen oder gesetzlichen Änderungen. Die jeweils aktuelle Version ist in der App und auf der zugehörigen App-Store-Seite verfügbar. Das Datum der letzten Aktualisierung ist oben angegeben.</p>
+  <p>Bei wesentlichen Änderungen werden Nutzer in der App informiert.</p>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">Q</div>
+          <span class="footer-logo-name">Quitto</span>
+        </div>
+        <p class="footer-tagline">Buchhaltung für §19-Kleinunternehmer. Endlich einfach.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+            <li><a href="agb.html">Nutzungsbedingungen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></li>
+            <li><a href="[APP_STORE_LINK]">App Store</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Tobias H. · Alle Rechte vorbehalten</p>
+      <a href="[APP_STORE_LINK]" class="footer-appstore">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.19 1.3-2.17 3.87.03 3.07 2.69 4.08 2.72 4.1l-.1.37zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Im App Store laden
+      </a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
