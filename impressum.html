@@ -1,75 +1,378 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impressum – Quitto</title>
+  <meta name="description" content="Impressum der Quitto iOS App nach §5 DDG (vormals §5 TMG) und §18 Abs. 2 MStV." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E7490'/%3E%3Ctext x='50' y='70' font-family='Inter,sans-serif' font-size='62' font-weight='800' fill='white' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E" />
+  <meta property="og:title" content="Impressum – Quitto" />
+  <meta property="og:description" content="Impressum der Quitto iOS-App." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0B2D48" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.7; color: #1c1c1e; background: #f5f5f7; padding: 24px 16px 64px; }
-    .container { max-width: 740px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 48px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
-    @media (max-width: 600px) { .container { padding: 28px 20px; } }
-    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
-    .logo-icon { width: 48px; height: 48px; background: #ff9500; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-    .logo-name { font-size: 22px; font-weight: 700; }
-    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-    .subtitle { color: #636366; margin-bottom: 36px; font-size: 15px; }
-    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #e5e5ea; }
-    p { margin-bottom: 12px; color: #3a3a3c; }
-    .info-box { background: #f2f2f7; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 15px; line-height: 1.8; }
-    .info-box a { color: #007aff; text-decoration: none; }
-    .highlight { background: #fff3cd; border-left: 3px solid #ff9500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 15px; }
-    a { color: #007aff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .updated { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea; font-size: 13px; color: #8e8e93; }
+
+    :root {
+      --navy:        #0B2D48;
+      --teal:        #0E7490;
+      --teal-bg:     #F0FDFF;
+      --gray-50:     #F8FAFC;
+      --gray-100:    #F1F5F9;
+      --gray-500:    #64748B;
+      --gray-700:    #334155;
+      --gray-900:    #0F172A;
+      --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--gray-900);
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.90);
+      backdrop-filter: saturate(180%) blur(16px);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .topbar-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .back-link:hover { color: var(--navy); }
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .topbar-logo-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .topbar-logo-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(160deg, #0B2D48 0%, #0c3d5e 50%, #0E7490 100%);
+      padding: 52px 24px 56px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 15px;
+      color: rgba(255,255,255,.6);
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    .content-wrap h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 48px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--teal-bg);
+      letter-spacing: -0.3px;
+    }
+    .content-wrap h2:first-child { margin-top: 0; }
+
+    .content-wrap p {
+      font-size: 15.5px;
+      color: var(--gray-700);
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+
+    .content-wrap strong {
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    .content-wrap a {
+      color: var(--teal);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .content-wrap a:hover { text-decoration: underline; }
+
+    .address-box {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 8px 0 16px;
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: var(--gray-700);
+    }
+
+    .highlight {
+      background: var(--teal-bg);
+      border: 1px solid #BAE6FD;
+      border-left: 4px solid var(--teal);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* Section number badge */
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 10px;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-900);
+      padding: 48px 24px 36px;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .footer-logo-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--teal) 0%, #0284C7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .footer-logo-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.3px;
+    }
+    .footer-tagline {
+      font-size: 13.5px;
+      color: rgba(255,255,255,.45);
+      max-width: 240px;
+      line-height: 1.6;
+    }
+    .footer-links h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 14px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.3); }
+
+    @media (max-width: 640px) {
+      .content-wrap { padding: 36px 20px 60px; }
+      .footer-top { flex-direction: column; }
+      .footer-links { display: flex; gap: 40px; flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="logo"><div class="logo-icon">🧾</div><span class="logo-name">Quitto</span></div>
-  <h1>Impressum</h1>
-  <p class="subtitle">Angaben gemäß § 5 TMG</p>
 
-  <h2>Anbieter</h2>
-  <div class="info-box">
-    <strong>Tobias Hötzel</strong><br>
-    Sennestraße 14<br>
-    44143 Dortmund<br>
+<!-- ── TOP BAR ── -->
+<nav class="topbar" aria-label="Hauptnavigation">
+  <div class="topbar-inner">
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Zurück
+    </a>
+    <a href="index.html" class="topbar-logo" aria-label="Quitto Startseite">
+      <div class="topbar-logo-icon" aria-hidden="true">Q</div>
+      <span class="topbar-logo-name">Quitto</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <h1>Impressum</h1>
+  <p>Angaben gemäß § 5 DDG (vormals § 5 TMG)</p>
+</div>
+
+<!-- ── CONTENT ── -->
+<div class="content-wrap">
+
+  <h2><span class="section-num">1</span>Anbieter</h2>
+  <div class="address-box">
+    <strong>Tobias Hötzel</strong><br/>
+    Sennestraße 14<br/>
+    44143 Dortmund<br/>
     Deutschland
   </div>
 
-  <h2>Kontakt</h2>
-  <div class="info-box">
+  <h2><span class="section-num">2</span>Kontakt</h2>
+  <div class="address-box">
     E-Mail: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a>
   </div>
 
-  <h2>Verantwortlich für den Inhalt (§ 55 Abs. 2 RStV)</h2>
-  <div class="info-box">
-    Tobias Hötzel<br>
-    Sennestraße 14<br>
+  <h2><span class="section-num">3</span>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <div class="address-box">
+    Tobias Hötzel<br/>
+    Sennestraße 14<br/>
     44143 Dortmund
   </div>
 
-  <h2>Kleinunternehmerregelung</h2>
+  <h2><span class="section-num">4</span>Kleinunternehmerregelung</h2>
   <div class="highlight">
     Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Tobias Hötzel ist Kleinunternehmer im Sinne des § 19 Abs. 1 UStG.
   </div>
 
-  <h2>App Store</h2>
+  <h2><span class="section-num">5</span>App Store</h2>
   <p>Die App „Quitto – Kleinunternehmer Buchhaltung" wird über den Apple App Store vertrieben. Apple ist nicht Vertragspartner für die App-Nutzung, sondern lediglich Plattformbetreiber.</p>
 
-  <h2>Haftungsausschluss</h2>
+  <h2><span class="section-num">6</span>Haftungsausschluss</h2>
 
-  <p><strong>Haftung für Inhalte:</strong> Die Inhalte dieser App wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Als Anbieter sind wir für eigene Inhalte nach § 7 Abs. 1 TMG verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder gespeicherter fremder Informationen besteht nicht.</p>
+  <p><strong>Haftung für Inhalte:</strong> Die Inhalte dieser App wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehme ich jedoch keine Gewähr. Als Anbieter bin ich für eigene Inhalte nach § 7 Abs. 1 DDG (vormals TMG) verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder gespeicherter fremder Informationen besteht nicht.</p>
 
-  <p><strong>Steuerliche Hinweise:</strong> Die in der App dargestellten Steuertipps und Richtwerte dienen ausschließlich der allgemeinen Information. Sie ersetzen keine individuelle steuerliche Beratung. Für verbindliche Auskünfte wende dich bitte an einen Steuerberater.</p>
+  <p><strong>Steuerliche Hinweise:</strong> Die in der App dargestellten Steuertipps und Richtwerte dienen ausschließlich der allgemeinen Information. Sie ersetzen keine individuelle steuerliche Beratung. Für verbindliche Auskünfte wenden Sie sich bitte an einen Steuerberater.</p>
 
-  <p><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Webseiten Dritter. Auf die Inhalte dieser fremden Seiten haben wir keinen Einfluss. Eine permanente Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.</p>
+  <p><strong>Haftung für Links:</strong> Diese App enthält Links zu externen Webseiten Dritter. Auf die Inhalte dieser fremden Seiten habe ich keinen Einfluss. Eine permanente Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.</p>
 
-  <h2>Streitschlichtung</h2>
-  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  <h2><span class="section-num">7</span>Streitschlichtung</h2>
+  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. Ich bin nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 
-  <div class="updated">Stand: Mai 2026 · Quitto – Kleinunternehmer Buchhaltung</div>
+  <p style="margin-top: 32px; font-size: 14px; color: var(--gray-500); font-style: italic;">Quitto wird entwickelt von Tobias Hötzel — einem Kleinentwickler, der selbst Kleinunternehmer ist.</p>
+
 </div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon" aria-hidden="true">Q</div>
+          <span class="footer-logo-name">Quitto</span>
+        </div>
+        <p class="footer-tagline">Buchhaltung für §19-Kleinunternehmer. Endlich einfach.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+            <li><a href="agb.html">Nutzungsbedingungen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></li>
+            <!-- TODO: App-Store-Link nach Release einsetzen -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Tobias Hötzel · Alle Rechte vorbehalten</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

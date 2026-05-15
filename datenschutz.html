@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Datenschutzerklärung – Quitto</title>
   <meta name="description" content="Datenschutzerklärung der Quitto iOS App für §19-Kleinunternehmer." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E7490'/%3E%3Ctext x='50' y='70' font-family='Inter,sans-serif' font-size='62' font-weight='800' fill='white' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E" />
+  <meta property="og:title" content="Datenschutzerklärung – Quitto" />
+  <meta property="og:description" content="Datenschutzerklärung der Quitto iOS-App für §19-Kleinunternehmer." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0B2D48" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,16 +19,13 @@
     :root {
       --navy:        #0B2D48;
       --teal:        #0E7490;
-      --teal-light:  #22D3EE;
       --teal-bg:     #F0FDFF;
       --white:       #FFFFFF;
       --gray-50:     #F8FAFC;
       --gray-100:    #F1F5F9;
-      --gray-300:    #CBD5E1;
       --gray-500:    #64748B;
       --gray-700:    #334155;
       --gray-900:    #0F172A;
-      --radius:      16px;
       --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
     }
 
@@ -314,20 +316,20 @@
 <body>
 
 <!-- ── TOP BAR ── -->
-<div class="topbar">
+<nav class="topbar" aria-label="Hauptnavigation">
   <div class="topbar-inner">
     <a href="index.html" class="back-link">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
       </svg>
       Zurück
     </a>
-    <a href="index.html" class="topbar-logo">
-      <div class="topbar-logo-icon">Q</div>
+    <a href="index.html" class="topbar-logo" aria-label="Quitto Startseite">
+      <div class="topbar-logo-icon" aria-hidden="true">Q</div>
       <span class="topbar-logo-name">Quitto</span>
     </a>
   </div>
-</div>
+</nav>
 
 <!-- ── PAGE HEADER ── -->
 <div class="page-header">
@@ -339,13 +341,13 @@
 <div class="content-wrap">
 
   <div class="info-box">
-    <p>🔒 Quitto speichert deine Buchhaltungsdaten ausschließlich lokal auf deinem iPhone. Es gibt keinen eigenen Server. Kein Tracking, keine Werbung, keine Nutzerprofile.</p>
+    <p>🔒 Quitto speichert Ihre Buchhaltungsdaten ausschließlich lokal auf Ihrem iPhone. Es gibt keinen eigenen Server. Kein Tracking, keine Werbung, keine Nutzerprofile.</p>
   </div>
 
   <h2><span class="section-num">1</span>Verantwortlicher</h2>
-  <p>Verantwortlich im Sinne der DSGVO:</p>
-  <p><strong>Tobias H.</strong><br/>Deutschland<br/>E-Mail: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
-  <p>Bei Fragen zum Datenschutz können Sie sich jederzeit per E-Mail an die oben genannte Adresse wenden.</p>
+  <p>Verantwortlich im Sinne der DSGVO (sowie der entsprechenden Vorschriften in Österreich und der Schweiz):</p>
+  <p><strong>Tobias Hötzel</strong><br/>Sennestraße 14<br/>44143 Dortmund<br/>Deutschland<br/>E-Mail: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
+  <p>Bei Fragen zum Datenschutz können Sie sich jederzeit per E-Mail an die oben genannte Adresse wenden. Vollständige Anbieter-Angaben finden Sie im <a href="impressum.html">Impressum</a>.</p>
 
   <h2><span class="section-num">2</span>Überblick: Wie Quitto mit Ihren Daten umgeht</h2>
   <p>Quitto ist eine Buchhaltungs-App für Kleinunternehmer nach §19 UStG. Alle Ihre Buchhaltungsdaten — Einnahmen, Ausgaben, Belege — werden <strong>ausschließlich lokal auf Ihrem iPhone gespeichert</strong> (via SwiftData). Es gibt keinen eigenen Backend-Server. Ihre Daten verlassen Ihr Gerät nicht, außer in den unten beschriebenen, eng begrenzten Fällen.</p>
@@ -353,7 +355,8 @@
 
   <h2><span class="section-num">3</span>Lokale Datenspeicherung</h2>
   <p>Alle von Ihnen eingegebenen Buchhaltungsdaten (z. B. Rechnungen, Ausgaben, Beträge, Notizen) werden lokal auf Ihrem Gerät gespeichert. Eine Übertragung dieser Daten an den Anbieter oder Dritte findet nicht statt.</p>
-  <p>Die Daten liegen im App-Sandbox-Bereich Ihres iPhones und sind für andere Apps nicht zugänglich. Wenn Sie die App löschen, werden alle lokal gespeicherten Daten entfernt.</p>
+  <p>Die Daten liegen im App-Sandbox-Bereich Ihres iPhones und sind für andere Apps nicht zugänglich.</p>
+  <p><strong>Speicherdauer:</strong> Die Daten bleiben auf Ihrem Gerät gespeichert, bis Sie einzelne Einträge in der App löschen oder die App vollständig deinstallieren. Mit der Deinstallation werden alle lokal gespeicherten Buchhaltungsdaten unwiderruflich entfernt. Da keine automatische Cloud-Sicherung erfolgt, empfehlen wir Ihnen, Ihre Daten regelmäßig extern zu sichern – insbesondere im Hinblick auf steuerliche Aufbewahrungspflichten (vgl. § 147 AO sowie § 14b UStG für Rechnungen).</p>
   <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung — die Speicherung ist erforderlich, damit die App funktioniert).</p>
 
   <h2><span class="section-num">4</span>KI-Belegauswertung: Cloudflare Worker und Claude API <em style="font-style:normal;font-size:13px;font-weight:500;color:var(--gray-500)">(nur Premium)</em></h2>
@@ -384,10 +387,10 @@
   <ul>
     <li>Technischer Stack-Trace des Fehlers (Datei-/Funktionsname, Zeilennummer)</li>
     <li>iOS-Version, Gerätemodell, App-Version und Build-Nummer</li>
-    <li>Anonyme Geräte-Installations-ID (kein Apple-Account, kein Name, keine E-Mail)</li>
+    <li>Pseudonyme Installations-ID, die pro App-Installation generiert wird und keinen Rückschluss auf Apple-Account, Name oder E-Mail erlaubt</li>
     <li>Zeitpunkt des Fehlers</li>
   </ul>
-  <p><strong>Was NICHT übertragen wird:</strong> Keine Buchhaltungsdaten, keine Rechnungen, keine Ausgaben, keine Beleg-Texte, keine Kunden, keine Firmendaten, keine personenbezogenen Identifikatoren. Die Option <code>sendDefaultPii</code> ist im Code dauerhaft deaktiviert.</p>
+  <p><strong>Was NICHT übertragen wird:</strong> Keine Buchhaltungsdaten, keine Rechnungen, keine Ausgaben, keine Beleg-Texte, keine Kunden, keine Firmendaten, keine direkten personenbezogenen Identifikatoren wie Name, E-Mail oder Apple-ID. Die Option <code>sendDefaultPii</code> ist im Code dauerhaft deaktiviert.</p>
   <p><strong>Datenstandort:</strong> Quitto nutzt das EU-Datacenter von Sentry (<code>ingest.de.sentry.io</code>, Frankfurt). Die Crash-Daten verlassen den EWR nicht.</p>
   <p><strong>Speicherdauer:</strong> Sentry speichert Crash-Berichte standardmäßig 90 Tage und löscht sie danach automatisch.</p>
   <p><strong>Auftragsverarbeiter:</strong></p>
@@ -412,15 +415,19 @@
     <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO): Sie können unter bestimmten Voraussetzungen eine Einschränkung der Verarbeitung verlangen.</li>
     <li><strong>Datenportabilität</strong> (Art. 20 DSGVO): Sie haben das Recht, Ihre Daten in einem gängigen maschinenlesbaren Format zu erhalten.</li>
     <li><strong>Widerspruch</strong> (Art. 21 DSGVO): Sie können der Verarbeitung Ihrer Daten widersprechen, soweit diese auf berechtigten Interessen beruht.</li>
-    <li><strong>Beschwerde bei einer Aufsichtsbehörde</strong> (Art. 77 DSGVO): z. B. beim Landesbeauftragten für den Datenschutz in Ihrem Bundesland (Deutschland), der Datenschutzbehörde Österreich (dsb.gv.at) oder dem EDÖB (edöb.admin.ch) in der Schweiz.</li>
+    <li><strong>Beschwerde bei einer Aufsichtsbehörde</strong> (Art. 77 DSGVO): z. B. beim Landesbeauftragten für den Datenschutz in Ihrem Bundesland (Deutschland), der Datenschutzbehörde Österreich (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a>) oder dem EDÖB (<a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">edoeb.admin.ch</a>) in der Schweiz.</li>
   </ul>
   <p>Da nahezu alle Daten lokal auf Ihrem Gerät gespeichert sind, können Sie Ihre Daten jederzeit direkt in der App einsehen, bearbeiten und löschen. Für Anfragen zu Daten bei Drittanbietern (z. B. RevenueCat) wenden Sie sich bitte direkt an die jeweiligen Anbieter.</p>
   <p>Für alle anderen Anfragen: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
 
-  <h2><span class="section-num">11</span>Kinder</h2>
+  <h2><span class="section-num">11</span>Hinweise für Nutzer in der Schweiz</h2>
+  <p>Für Nutzer mit Wohnsitz in der Schweiz gelten die Bestimmungen des revidierten Schweizer Datenschutzgesetzes (<strong>revDSG</strong>, in Kraft seit 1. September 2023) sinngemäß. Die in dieser Erklärung beschriebenen Datenverarbeitungen entsprechen inhaltlich den Anforderungen des revDSG; die Begriffe der DSGVO (z. B. „personenbezogene Daten", „Verantwortlicher", „Auftragsverarbeiter") sind für Schweizer Nutzer entsprechend den Begriffen des revDSG („Personendaten", „Verantwortlicher", „Auftragsbearbeiter") zu lesen.</p>
+  <p>Zuständige Aufsichtsbehörde in der Schweiz ist der Eidgenössische Datenschutz- und Öffentlichkeitsbeauftragte (EDÖB): <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">edoeb.admin.ch</a>.</p>
+
+  <h2><span class="section-num">12</span>Kinder</h2>
   <p>Quitto richtet sich nicht an Kinder unter 13 Jahren. Es werden wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren erhoben.</p>
 
-  <h2><span class="section-num">12</span>Änderungen dieser Datenschutzerklärung</h2>
+  <h2><span class="section-num">13</span>Änderungen dieser Datenschutzerklärung</h2>
   <p>Diese Datenschutzerklärung kann gelegentlich aktualisiert werden, z. B. bei neuen Funktionen oder gesetzlichen Änderungen. Die jeweils aktuelle Version ist in der App und auf der zugehörigen App-Store-Seite verfügbar. Das Datum der letzten Aktualisierung ist oben angegeben.</p>
   <p>Bei wesentlichen Änderungen werden Nutzer in der App informiert.</p>
 
@@ -441,6 +448,7 @@
         <div>
           <h4>Rechtliches</h4>
           <ul>
+            <li><a href="impressum.html">Impressum</a></li>
             <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
             <li><a href="agb.html">Nutzungsbedingungen</a></li>
           </ul>
@@ -449,17 +457,19 @@
           <h4>Kontakt</h4>
           <ul>
             <li><a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></li>
-            <li><a href="[APP_STORE_LINK]">App Store</a></li>
+            <!-- TODO: App-Store-Link nach Release einsetzen -->
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Tobias H. · Alle Rechte vorbehalten</p>
+      <p class="footer-copy">© 2026 Tobias Hötzel · Alle Rechte vorbehalten</p>
+      <!-- TODO: App-Store-Button reaktivieren, sobald die App live ist
       <a href="[APP_STORE_LINK]" class="footer-appstore">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.19 1.3-2.17 3.87.03 3.07 2.69 4.08 2.72 4.1l-.1.37zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Im App Store laden
       </a>
+      -->
     </div>
   </div>
 </footer>

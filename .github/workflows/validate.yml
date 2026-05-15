@@ -1,0 +1,75 @@
+name: Validate HTML
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  htmlhint:
+    name: HTMLHint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install HTMLHint
+        run: npm install -g htmlhint@latest
+
+      - name: Run HTMLHint
+        run: htmlhint "*.html"
+
+  internal-links:
+    name: Interne Links prüfen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify internal links point to existing files
+        shell: bash
+        run: |
+          set -euo pipefail
+          fail=0
+          # Find all href values pointing to local .html files
+          while IFS= read -r line; do
+            src_file="${line%%:*}"
+            target="${line#*: }"
+            if [ ! -f "$target" ]; then
+              echo "::error file=$src_file::Broken internal link to '$target'"
+              fail=1
+            fi
+          done < <(
+            grep -nHoE 'href="[^"#?]+\.html"' *.html \
+              | sed -E 's/:[0-9]+:href="([^"]+)"/: \1/'
+          )
+          if [ "$fail" -eq 0 ]; then
+            echo "✓ Alle internen .html-Links zeigen auf existierende Dateien."
+          else
+            exit 1
+          fi
+
+      - name: Warn on unfilled placeholders outside comments
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Strip HTML comments, then look for [APP_STORE_LINK] in remaining content
+          fail=0
+          for f in *.html; do
+            stripped=$(perl -0777 -pe 's/<!--.*?-->//gs' "$f")
+            if echo "$stripped" | grep -q '\[APP_STORE_LINK\]'; then
+              echo "::error file=$f::Aktiver [APP_STORE_LINK]-Platzhalter gefunden (nicht in Kommentar). Bitte echten App-Store-Link einsetzen oder als <!-- TODO --> markieren."
+              fail=1
+            fi
+          done
+          if [ "$fail" -eq 0 ]; then
+            echo "✓ Keine aktiven [APP_STORE_LINK]-Platzhalter."
+          else
+            exit 1
+          fi
