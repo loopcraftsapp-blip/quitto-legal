@@ -22,9 +22,17 @@
     a { color: #007aff; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .updated { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea; font-size: 13px; color: #8e8e93; }
-  </style>
+    .q-nav { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; max-width:780px; margin:0 auto 8px; }
+  .q-nav-logo { display:flex; align-items:center; gap:8px; text-decoration:none; font-size:16px; font-weight:600; color:#2E2820; }
+  .q-footer { border-top:1px solid #EAE2D5; margin-top:40px; padding:24px 20px; text-align:center; }
+  .q-footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:4px 16px; margin-bottom:10px; }
+  .q-footer-links a { font-size:13px; color:#6B6356; text-decoration:none; }
+  .q-footer-links a:hover { color:#2E2820; }
+  .q-footer-copy { font-size:12px; color:#9A9183; }
+</style>
 </head>
 <body>
+<nav class="q-nav"><a class="q-nav-logo" href="/"><span>🍋</span> Quitto</a></nav>
 <div class="container">
   <div class="logo"><div class="logo-icon">🧾</div><span class="logo-name">Quitto</span></div>
   <h1>Impressum</h1>
@@ -71,5 +79,6 @@
 
   <div class="updated">Stand: Mai 2026 · Quitto – Kleinunternehmer Buchhaltung</div>
 </div>
+<div class="q-footer"><div class="q-footer-links"><a href="/">Startseite</a><a href="/support">Support</a><a href="/datenschutz">Datenschutz</a><a href="/agb">AGB</a><a href="/impressum">Impressum</a></div><p class="q-footer-copy">© 2026 Tobias Hötzel · Quitto</p></div>
 </body>
 </html>
