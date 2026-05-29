@@ -6,29 +6,100 @@
   <title>Impressum – Quitto</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.7; color: #1c1c1e; background: #f5f5f7; padding: 24px 16px 64px; }
-    .container { max-width: 740px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 48px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
-    @media (max-width: 600px) { .container { padding: 28px 20px; } }
-    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
-    .logo-icon { width: 48px; height: 48px; background: #ff9500; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-    .logo-name { font-size: 22px; font-weight: 700; }
-    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-    .subtitle { color: #636366; margin-bottom: 36px; font-size: 15px; }
-    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #e5e5ea; }
-    p { margin-bottom: 12px; color: #3a3a3c; }
-    .info-box { background: #f2f2f7; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 15px; line-height: 1.8; }
-    .info-box a { color: #007aff; text-decoration: none; }
-    .highlight { background: #fff3cd; border-left: 3px solid #ff9500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 15px; }
-    a { color: #007aff; text-decoration: none; }
+
+    :root {
+      --bg: #F6F1E9; --surface: #FDFBF7; --ink: #2E2820;
+      --ink2: #6B6356; --ink3: #9A9183; --line2: #EAE2D5;
+      --quince-deep: #9A7320; --quince-tint: #F6ECCF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hanken Grotesk', -apple-system, sans-serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.75; -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hide old navigation and footer elements */
+    .topbar, footer, .topbar-inner, .page-header-old { display: none !important; }
+
+    /* New nav (from q-nav injection) */
+    .q-nav {
+      display: flex; align-items: center;
+      padding: 14px 20px; max-width: 780px; margin: 0 auto;
+    }
+    .q-nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; font-size: 16px; font-weight: 600; color: var(--ink);
+    }
+
+    /* Page header */
+    .page-header {
+      background: var(--quince-tint);
+      border-bottom: 1px solid #E8D08A;
+      padding: 28px 24px 22px;
+    }
+    .page-header h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(26px, 5vw, 36px); font-weight: 400;
+      color: var(--ink); margin-bottom: 4px;
+    }
+    .page-header p { font-size: 13px; color: var(--ink3); }
+
+    /* Content */
+    .container, .content-wrap {
+      max-width: 720px; margin: 0 auto; padding: 28px 20px 56px;
+    }
+    h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; font-weight: 400; margin-bottom: 6px; }
+    .subtitle { color: var(--ink3); margin-bottom: 28px; font-size: 14px; }
+    h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 20px; font-weight: 400; color: var(--ink);
+      margin: 30px 0 8px; padding-bottom: 5px;
+      border-bottom: 1px solid var(--line2);
+    }
+    h3 { font-size: 15px; font-weight: 600; color: var(--ink); margin: 16px 0 5px; }
+    p { margin-bottom: 10px; color: var(--ink2); font-size: 15px; }
+    ul, ol { padding-left: 18px; margin-bottom: 10px; color: var(--ink2); font-size: 15px; }
+    li { margin-bottom: 3px; }
+    a { color: var(--quince-deep); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .updated { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea; font-size: 13px; color: #8e8e93; }
-    .q-nav { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; max-width:780px; margin:0 auto 8px; }
-  .q-nav-logo { display:flex; align-items:center; gap:8px; text-decoration:none; font-size:16px; font-weight:600; color:#2E2820; }
-  .q-footer { border-top:1px solid #EAE2D5; margin-top:40px; padding:24px 20px; text-align:center; }
-  .q-footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:4px 16px; margin-bottom:10px; }
-  .q-footer-links a { font-size:13px; color:#6B6356; text-decoration:none; }
-  .q-footer-links a:hover { color:#2E2820; }
-  .q-footer-copy { font-size:12px; color:#9A9183; }
+    .info-box {
+      background: var(--surface); border: 1px solid var(--line2);
+      border-radius: 10px; padding: 12px 16px; margin: 12px 0;
+      font-size: 14px; line-height: 1.65;
+    }
+    .info-box a { color: var(--quince-deep); }
+    .highlight {
+      background: var(--quince-tint); border-left: 3px solid #E8D08A;
+      padding: 10px 14px; border-radius: 0 8px 8px 0;
+      margin: 14px 0; font-size: 14px;
+    }
+    .logo { display: none; }
+    .updated {
+      margin-top: 36px; padding-top: 16px;
+      border-top: 1px solid var(--line2);
+      font-size: 13px; color: var(--ink3);
+    }
+
+    /* Footer (from q-footer injection) */
+    .q-footer {
+      border-top: 1px solid var(--line2);
+      padding: 22px 20px; text-align: center;
+    }
+    .q-footer-links {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 4px 14px; margin-bottom: 8px;
+    }
+    .q-footer-links a { font-size: 13px; color: var(--ink2); text-decoration: none; }
+    .q-footer-links a:hover { color: var(--ink); }
+    .q-footer-copy { font-size: 12px; color: var(--ink3); }
+
+    @media (max-width: 480px) {
+      .container, .content-wrap { padding: 20px 16px 40px; }
+      .page-header { padding: 20px 16px 18px; }
+    }
 </style>
 </head>
 <body>
