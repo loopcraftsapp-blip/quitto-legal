@@ -153,7 +153,7 @@
 
   <h2><span class="section-num">2</span>Überblick: Wie Quittly mit Ihren Daten umgeht</h2>
   <p>Quittly ist eine Buchhaltungs-App für Kleinunternehmer nach §19 UStG. Alle Ihre Buchhaltungsdaten — Einnahmen, Ausgaben, Belege — werden <strong>ausschließlich lokal auf Ihrem iPhone gespeichert</strong> (via SwiftData). Es gibt keinen eigenen Backend-Server. Ihre Daten verlassen Ihr Gerät nicht, außer in den unten beschriebenen, eng begrenzten Fällen.</p>
-  <p>Quittly verwendet kein Behavioral Tracking, keine Werbenetzwerke und keine Marketing-Analytics. Es werden keine Nutzungsprofile erstellt. Zur reinen Stabilitätssicherung der App werden anonyme Crash-Berichte über Sentry verarbeitet (siehe Abschnitt 7).</p>
+  <p>Quittly verwendet kein Behavioral Tracking und keine Werbenetzwerke. Es werden keine personalisierten Nutzerprofile erstellt und keine Daten für Werbezwecke genutzt. Zur reinen Stabilitätssicherung werden anonyme Crash-Berichte über Sentry verarbeitet (Abschnitt 7). Zur anonymen Produkt-Analyse werden aggregierte, nicht-personenbezogene Nutzungssignale über TelemetryDeck verarbeitet (Abschnitt 8). Zur Messung der Wirksamkeit von App-Store-Kampagnen wird anonyme Kampagnen-Attribution via Apple AdServices abgerufen (Abschnitt 8), ohne IDFA oder persönliche Identifikatoren.</p>
 
   <h2><span class="section-num">3</span>Lokale Datenspeicherung</h2>
   <p>Alle von Ihnen eingegebenen Buchhaltungsdaten (z. B. Rechnungen, Ausgaben, Beträge, Notizen) werden lokal auf Ihrem Gerät gespeichert. Eine Übertragung dieser Daten an den Anbieter oder Dritte findet nicht statt.</p>
@@ -201,13 +201,32 @@
   <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an einer stabilen, fehlerfreien App. Die übermittelten Daten sind streng auf das technische Minimum begrenzt.</p>
   <p><strong>Widerspruchsrecht:</strong> Sie können der Verarbeitung jederzeit per E-Mail an <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a> widersprechen. Wir werden Sie dann in zukünftigen Builds aus dem Crash-Reporting ausschließen.</p>
 
-  <h2><span class="section-num">8</span>Keine Cookies, kein Tracking, keine Werbung</h2>
-  <p>Quittly ist eine native iOS-App und verwendet weder Cookies noch Web-Tracking-Technologien. Es werden keine Werbenetzwerke eingebunden, keine Nutzungsprofile erstellt und keine Daten für Werbezwecke genutzt oder weitergegeben.</p>
+  <h2><span class="section-num">8</span>Anonyme Produkt-Analyse: TelemetryDeck &amp; Apple AdServices</h2>
+  <p>Damit Quittly gezielt verbessert werden kann, nutzt die App zwei datenschutzfreundliche Analyse-Bausteine:</p>
 
-  <h2><span class="section-num">9</span>Keine Weitergabe an Dritte</h2>
-  <p>Ihre Daten werden nicht an Dritte verkauft oder zu Werbezwecken weitergegeben. Eine Weitergabe erfolgt ausschließlich an die oben genannten Auftragsverarbeiter (Cloudflare, Anthropic, RevenueCat, Apple, Sentry), soweit dies für den Betrieb der jeweiligen Funktion technisch erforderlich ist, und nur auf Basis entsprechender Verträge zur Auftragsverarbeitung.</p>
+  <p><strong>8a) TelemetryDeck (Produkt-Analyse)</strong></p>
+  <p>Quittly sendet anonyme Nutzungssignale — z. B. ob das Onboarding abgeschlossen wurde, ob ein Beleg gescannt oder ein EÜR-Export durchgeführt wurde — an den Dienst <strong>TelemetryDeck</strong>. Die Signale enthalten <em>keine</em> personenbezogenen Daten, keine Gerätekennungen (kein IDFA, keine IDFV) und keine Buchhaltungsinhalte. TelemetryDeck ersetzt die Geräte-IP vor der Speicherung durch einen anonymen Hash; eine Re-Identifizierung ist damit ausgeschlossen.</p>
+  <p><strong>Was übertragen wird:</strong> Anonymes Ereignis-Signal (z. B. „paywallShown"), App-Version, iOS-Version, Zeitstempel, ggf. technische Kampagnen-Attribute aus Apple AdServices (keine persönlichen Identifikatoren).</p>
+  <p><strong>Was NICHT übertragen wird:</strong> Keine Buchhaltungsdaten, keine Namen, keine E-Mails, kein IDFA, keine IP-Adresse in lesbarer Form.</p>
+  <p><strong>Auftragsverarbeiter:</strong></p>
+  <ul>
+    <li><strong>TelemetryDeck GmbH</strong>, Barbarastr. 1, 80803 München, Deutschland. Verarbeitung ausschließlich in der EU. Datenschutzerklärung: <a href="https://telemetrydeck.com/privacy/" target="_blank" rel="noopener">telemetrydeck.com/privacy</a></li>
+  </ul>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Verbesserung der App-Qualität und Nutzererfahrung. Da die Signale vollständig anonym sind, ist das Interesse der Nutzer am Datenschutz nicht beeinträchtigt.</p>
+  <p><strong>Widerspruchsrecht:</strong> Sie können der Verarbeitung jederzeit per E-Mail an <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a> widersprechen.</p>
 
-  <h2><span class="section-num">10</span>Ihre Rechte als betroffene Person</h2>
+  <p><strong>8b) Apple Search Ads Attribution (AdServices)</strong></p>
+  <p>Um zu messen, ob Quittly-Installationen über Apple-Search-Ads-Kampagnen zustande kamen, nutzt die App das <strong>Apple AdServices-Framework</strong> (verfügbar seit iOS 14.3). Dabei wird einmalig ein anonymes Attributions-Token von Apple abgerufen, das Informationen wie Kampagnen-ID, Anzeigengruppen-ID und Land enthält. Es werden <em>kein IDFA</em> und keine persönlichen Identifikatoren übertragen.</p>
+  <p><strong>Datenfluss:</strong> Das Token wird direkt von Apple-Servern (<code>api-adservices.apple.com</code>) abgerufen und lokal auf dem Gerät sowie als anonymes Signal-Attribut in TelemetryDeck gespeichert. Apple verarbeitet hierbei keine Daten im Auftrag von Quittly — der Abruf erfolgt über eine Apple-eigene API.</p>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Effizienzmessung von Marketingmaßnahmen. Kein ATT-Consent (AppTrackingTransparency) erforderlich, da kein IDFA verwendet wird.</p>
+
+  <h2><span class="section-num">9</span>Keine Cookies, kein Marketing-Tracking</h2>
+  <p>Quittly ist eine native iOS-App und verwendet weder Cookies noch Web-Tracking-Technologien. Es werden keine Werbenetzwerke eingebunden, keine personalisierten Nutzerprofile erstellt und keine Daten für personalisierte Werbung genutzt oder weitergegeben. TelemetryDeck (Abschnitt 8) ist anonyme Produkt-Analyse, kein Marketing-Profiling.</p>
+
+  <h2><span class="section-num">10</span>Keine Weitergabe an Dritte</h2>
+  <p>Ihre Daten werden nicht an Dritte verkauft oder zu Werbezwecken weitergegeben. Eine Weitergabe erfolgt ausschließlich an die oben genannten Dienstleister (Cloudflare, Anthropic, RevenueCat, Apple, Sentry, TelemetryDeck), soweit dies für den Betrieb der jeweiligen Funktion technisch erforderlich ist, und nur auf Basis entsprechender Verträge zur Auftragsverarbeitung oder Datenverarbeitungsvereinbarungen.</p>
+
+  <h2><span class="section-num">11</span>Ihre Rechte als betroffene Person</h2>
   <p>Sie haben gegenüber dem Verantwortlichen folgende Rechte:</p>
   <ul>
     <li><strong>Auskunft</strong> (Art. 15 DSGVO): Sie können erfahren, welche Daten über Sie verarbeitet werden.</li>
@@ -221,10 +240,10 @@
   <p>Da nahezu alle Daten lokal auf Ihrem Gerät gespeichert sind, können Sie Ihre Daten jederzeit direkt in der App einsehen, bearbeiten und löschen. Für Anfragen zu Daten bei Drittanbietern (z. B. RevenueCat) wenden Sie sich bitte direkt an die jeweiligen Anbieter.</p>
   <p>Für alle anderen Anfragen: <a href="mailto:loopcrafts.app@gmail.com">loopcrafts.app@gmail.com</a></p>
 
-  <h2><span class="section-num">11</span>Kinder</h2>
+  <h2><span class="section-num">12</span>Kinder</h2>
   <p>Quittly richtet sich nicht an Kinder unter 13 Jahren. Es werden wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren erhoben.</p>
 
-  <h2><span class="section-num">12</span>Änderungen dieser Datenschutzerklärung</h2>
+  <h2><span class="section-num">13</span>Änderungen dieser Datenschutzerklärung</h2>
   <p>Diese Datenschutzerklärung kann gelegentlich aktualisiert werden, z. B. bei neuen Funktionen oder gesetzlichen Änderungen. Die jeweils aktuelle Version ist in der App und auf der zugehörigen App-Store-Seite verfügbar. Das Datum der letzten Aktualisierung ist oben angegeben.</p>
   <p>Bei wesentlichen Änderungen werden Nutzer in der App informiert.</p>
 
